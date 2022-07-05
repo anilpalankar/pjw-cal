@@ -12,6 +12,10 @@ import * as moment from 'moment';
 })
 export class RateCaptureDialogComponent implements OnInit {
   rateCaptureForm!: FormGroup;
+  category_Apercent = 0.693;
+  category_Bpercent = 0.847;
+  category_Cpercent = 1;
+
   constructor(@Inject(MAT_DIALOG_DATA) public readonly _data: any,
    public readonly dialogRef: MatDialogRef<DialogComponent>,
    private readonly snackBarService: SnackBarService) {}
@@ -59,16 +63,26 @@ addORUpdateArtefact(){
  // this._data.customData.isProceedclicked = true;
 
  if(this.rateCaptureForm.valid){
-    const silverRateVal = this.rateCaptureForm.controls["Silver_Rate"].value;
-    const goldRateVal = this.rateCaptureForm.controls["Gold_Rate"].value;
+    const silverRateVal = Number(this.rateCaptureForm.controls["Silver_Rate"].value);
+    const goldRateVal = Number(this.rateCaptureForm.controls["Gold_Rate"].value);
   
-    localStorage.setItem('silverRate',silverRateVal);
-    localStorage.setItem('goldRate',goldRateVal);
+    localStorage.setItem('silverRate',String(silverRateVal));
+    localStorage.setItem('goldRate',String(goldRateVal));
     this._data.silverRate = silverRateVal;
     this._data.goldRate = goldRateVal;
 
     const currentDate = moment(new Date()).format('DD-MM-YYYY');
     localStorage.setItem('rateCapturedDate',currentDate);
+
+    const category_A = Math.round(this.category_Apercent * silverRateVal / 100);
+    const category_B = Math.round(this.category_Bpercent * silverRateVal / 100);
+    const category_C = Math.round(this.category_Cpercent * silverRateVal / 100);
+
+    localStorage.setItem('category_A',String(category_A));
+    localStorage.setItem('category_B',String(category_B));
+    localStorage.setItem('category_C',String(category_C));
+    
+
     this.snackBarService.displaySnackBar('Gold/Silver rates are updated successfully');    
   
     this.dialogRef.close(this._data);

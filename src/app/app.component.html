@@ -380,54 +380,107 @@ li a:hover{
             <mat-tab-group>
               <mat-tab>
                 <ng-template mat-tab-label>             
-                  450
+                  Category-A({{this.category_A}})
                 </ng-template>     
-              <mat-grid-list cols="2" rowHeight="50px">     
+           
+              <mat-grid-list cols="4" rowHeight="50px">    
+                <mat-grid-tile colspan="1" rowspan="1">                  
+                </mat-grid-tile>
                 <mat-grid-tile>
-                  <label>Fancy Payal / ಕಾಲ್ಚೈನ್:</label> 
-                </mat-grid-tile> 
+                  <label>Actual</label>                
+                </mat-grid-tile>
                 <mat-grid-tile>
-                  {{silverItemsObj?.silver450?.fancyPayalChain}}
+                  <label>Selling</label>                        
+                </mat-grid-tile>
+                <mat-grid-tile>
+                  <label>Profit</label>           
                 </mat-grid-tile>  
-
+                <mat-grid-tile colspan="1" rowspan="1">
+                  <label>Fancy Payal / ಕಾಲ್ಚೈನ್:</label> 
+                </mat-grid-tile>
                 <mat-grid-tile>
+                  {{silverItemsObj?.silver450?.fancyPayalChain?.actialPrice}}               
+                </mat-grid-tile>
+                <mat-grid-tile>
+                  {{silverItemsObj?.silver450?.fancyPayalChain?.sellingPrice}}
+                </mat-grid-tile>
+                <mat-grid-tile>
+                  {{silverItemsObj?.silver450?.fancyPayalChain?.profit}}            
+                </mat-grid-tile>  
+                <mat-grid-tile colspan="1" rowspan="1">
                   <label>Normal Payal / ಕಾಲ್ಚೈನ್:</label> 
-                </mat-grid-tile> 
+                </mat-grid-tile>
                 <mat-grid-tile>
-                  {{silverItemsObj?.silver450?.normalPayalChain}}
-                </mat-grid-tile> 
-              </mat-grid-list>    
+                  {{silverItemsObj?.silver450?.normalPayalChain?.actialPrice}}               
+                </mat-grid-tile>
+                <mat-grid-tile>
+                  {{silverItemsObj?.silver450?.normalPayalChain?.sellingPrice}}
+                </mat-grid-tile>
+                <mat-grid-tile>
+                  {{silverItemsObj?.silver450?.normalPayalChain?.profit}}            
+                </mat-grid-tile>                       
+              </mat-grid-list>
+              
+
               </mat-tab>
             
               <mat-tab>
                 <ng-template mat-tab-label>             
-                  550
+                  Category-B({{this.category_B}})
                 </ng-template>
-                <mat-grid-list cols="2" rowHeight="50px">     
-                  <mat-grid-tile>
-                    <label>Children Kada / ಮಕ್ಕಳ ಕಡ:</label> 
-                  </mat-grid-tile> 
-                  <mat-grid-tile>
-                    {{silverItemsObj?.silver550?.silverKada?.child}}
+                <mat-grid-list cols="4" rowHeight="50px">    
+                  <mat-grid-tile colspan="1" rowspan="1">                  
                   </mat-grid-tile>
                   <mat-grid-tile>
+                    <label>Actual</label>                
+                  </mat-grid-tile>
+                  <mat-grid-tile>
+                    <label>Selling</label>                        
+                  </mat-grid-tile>
+                  <mat-grid-tile>
+                    <label>Profit</label>           
+                  </mat-grid-tile>  
+                  <mat-grid-tile colspan="1" rowspan="1">
+                    <label>Children Kada / ಮಕ್ಕಳ ಕಡ:</label> 
+                  </mat-grid-tile>
+                  <mat-grid-tile>
+                    {{silverItemsObj?.silver550?.silverKada?.child?.actialPrice}}               
+                  </mat-grid-tile>
+                  <mat-grid-tile>
+                    {{silverItemsObj?.silver550?.silverKada?.child?.sellingPrice}}
+                  </mat-grid-tile>
+                  <mat-grid-tile>
+                    {{silverItemsObj?.silver550?.silverKada?.child?.profit}}            
+                  </mat-grid-tile>  
+                  <mat-grid-tile colspan="1" rowspan="1">
                     <label>Gents Kada / ಹುಡುಗರ ಕಡ:</label> 
-                  </mat-grid-tile> 
+                  </mat-grid-tile>
                   <mat-grid-tile>
-                    {{silverItemsObj?.silver550?.silverKada?.gents}}
-                  </mat-grid-tile> 
-
+                    {{silverItemsObj?.silver550?.silverKada?.gents?.actialPrice}}               
+                  </mat-grid-tile>
                   <mat-grid-tile>
+                    {{silverItemsObj?.silver550?.silverKada?.gents?.sellingPrice}}
+                  </mat-grid-tile>
+                  <mat-grid-tile>
+                    {{silverItemsObj?.silver550?.silverKada?.gents?.profit}}            
+                  </mat-grid-tile>     
+                  <mat-grid-tile colspan="1" rowspan="1">
                     <label>Ladies Kada / ಹೆಂಗಸರ ಕಡ:</label> 
-                  </mat-grid-tile> 
+                  </mat-grid-tile>
                   <mat-grid-tile>
-                    {{silverItemsObj?.silver550?.silverKada?.ladies}}
-                  </mat-grid-tile> 
-                </mat-grid-list>   
+                    {{silverItemsObj?.silver550?.silverKada?.ladies?.actialPrice}}               
+                  </mat-grid-tile>
+                  <mat-grid-tile>
+                    {{silverItemsObj?.silver550?.silverKada?.ladies?.sellingPrice}}
+                  </mat-grid-tile>
+                  <mat-grid-tile>
+                    {{silverItemsObj?.silver550?.silverKada?.ladies?.profit}}            
+                  </mat-grid-tile>                    
+                </mat-grid-list>
               </mat-tab>   
               <mat-tab>
                 <ng-template mat-tab-label>            
-                  650
+                  Category-C({{this.category_C}})
                 </ng-template>
                 Content 3
               </mat-tab>  

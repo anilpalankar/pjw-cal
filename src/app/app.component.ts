@@ -20,6 +20,12 @@ export class AppComponent implements OnInit {
   goldRate=0;
   silverWastageInpercent = 10;
   mcPerGramInRupees = 10;
+  categoryApercent = 0.693;
+  categoryBpercent = 0.847;
+  categoryCpercent = 1;
+  category_A = 0;
+  category_B = 0;
+  category_C = 0;
 
   constructor(private readonly appService: AppCommonService,protected readonly popupService: PopupDialogService, ) {
     
@@ -39,6 +45,12 @@ export class AppComponent implements OnInit {
         this.calculateForm =  new FormGroup({
           weightText: new FormControl('', [Validators.required])             
       });
+if(localStorage.getItem('category_A') !== null){
+  this.category_A = Number(localStorage.getItem('category_A'));
+  this.category_B = Number(localStorage.getItem('category_B'));
+  this.category_C = Number(localStorage.getItem('category_C'));
+}
+      
   }
 
   updateRate(evt:any){
@@ -81,6 +93,9 @@ export class AppComponent implements OnInit {
               console.log(data);
               this.silverRate = data.silverRate;
               this.goldRate = data.goldRate;
+              this.category_A = Number(localStorage.getItem('category_A'));
+              this.category_B = Number(localStorage.getItem('category_B'));
+              this.category_C = Number(localStorage.getItem('category_C'));
                 //  this.snackBarService.displaySnackBar('call back');
             }
         },
@@ -100,12 +115,43 @@ addORUpdateArtefact() {
       const silverPergm = this.silverRate / 1000;
       this.silverItemsObj.silverWastage = itemWeight * this.silverWastageInpercent / 100;
       this.silverItemsObj.silverMc = itemWeight *  this.mcPerGramInRupees;
+      const totalSilverWeight = itemWeight + this.silverItemsObj.silverWastage;      
 
-      this.silverItemsObj.silver450 = {} as Silver450;
-      this.silverItemsObj.silver450.fancyPayalChain = 100;
-      this.silverItemsObj.silver450.normalPayalChain = 100;
+// CATEGORY A
+      this.silverItemsObj.silver450 = {} as Silver450;      
+   
+      this.silverItemsObj.silver450.fancyPayalChain = {} as Price;
+      this.silverItemsObj.silver450.fancyPayalChain.actialPrice = totalSilverWeight + this.category_A + this.silverItemsObj.silverMc;
+      this.silverItemsObj.silver450.fancyPayalChain.sellingPrice =  totalSilverWeight + this.category_A + this.silverItemsObj.silverMc;;
+      this.silverItemsObj.silver450.fancyPayalChain.profit = this.silverItemsObj.silver450.fancyPayalChain.sellingPrice - this.silverItemsObj.silver450.fancyPayalChain.actialPrice;
+      
+      this.silverItemsObj.silver450.normalPayalChain = {} as Price;
+      this.silverItemsObj.silver450.normalPayalChain.actialPrice = totalSilverWeight + this.category_A + this.silverItemsObj.silverMc;
+      this.silverItemsObj.silver450.normalPayalChain.sellingPrice =  totalSilverWeight + this.category_A + this.silverItemsObj.silverMc;;
+      this.silverItemsObj.silver450.normalPayalChain.profit = this.silverItemsObj.silver450.normalPayalChain.sellingPrice - this.silverItemsObj.silver450.normalPayalChain.actialPrice;
+      
 
+// CATEGORY B
+      this.silverItemsObj.silver550 = {} as Silver550;
 
+      this.silverItemsObj.silver550.silverKada = {} as SilverKada;
+      this.silverItemsObj.silver550.silverKada.child = {} as Price;
+
+      this.silverItemsObj.silver550.silverKada.child.actialPrice = totalSilverWeight + this.category_B + this.silverItemsObj.silverMc;
+      this.silverItemsObj.silver550.silverKada.child.sellingPrice = totalSilverWeight + this.category_B + this.silverItemsObj.silverMc;
+      this.silverItemsObj.silver550.silverKada.child.profit = this.silverItemsObj.silver550.silverKada.child.sellingPrice - this.silverItemsObj.silver550.silverKada.child.actialPrice;
+
+      this.silverItemsObj.silver550.silverKada.gents = {} as Price;
+
+      this.silverItemsObj.silver550.silverKada.gents.actialPrice = totalSilverWeight + this.category_B + this.silverItemsObj.silverMc;
+      this.silverItemsObj.silver550.silverKada.gents.sellingPrice = totalSilverWeight + this.category_B + this.silverItemsObj.silverMc;
+      this.silverItemsObj.silver550.silverKada.gents.profit = this.silverItemsObj.silver550.silverKada.gents.sellingPrice - this.silverItemsObj.silver550.silverKada.gents.actialPrice;
+
+      this.silverItemsObj.silver550.silverKada.ladies = {} as Price;
+
+      this.silverItemsObj.silver550.silverKada.ladies.actialPrice = totalSilverWeight + this.category_B + this.silverItemsObj.silverMc;
+      this.silverItemsObj.silver550.silverKada.ladies.sellingPrice = totalSilverWeight + this.category_B + this.silverItemsObj.silverMc;
+      this.silverItemsObj.silver550.silverKada.ladies.profit = this.silverItemsObj.silver550.silverKada.ladies.sellingPrice - this.silverItemsObj.silver550.silverKada.ladies.actialPrice;
 
     }   
 
@@ -123,19 +169,25 @@ export interface SilverItems {
 }
 
 export interface Silver450 {
-  normalPayalChain: number;
-  fancyPayalChain:number;  
+  normalPayalChain: Price;
+  fancyPayalChain:Price;  
+}
+
+export interface Price{
+  sellingPrice:number;
+  actialPrice:number;
+  profit:number;
 }
 
 export interface SilverKada{
-  gents:number;
-  ladies:number;
-  child:number;
+  gents:Price;
+  ladies:Price;
+  child:Price;
 }
 
 export interface SilverKaalBale{  
-  ladies:number;
-  child:number;
+  ladies:Price;
+  child:Price;
 }
 
 
