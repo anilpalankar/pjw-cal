@@ -42,7 +42,7 @@
     height: 60px;
     display: flex;
     align-items: center;
-    background-color: #1976d2;
+    background-color: #4c4c4c;
     color: white;
     font-weight: 600;
   }
@@ -272,6 +272,23 @@
     width: 1920px;
   }
 
+  ul.rate {
+  list-style-type: none;
+  
+}
+
+li a{
+  color: whitesmoke;
+  
+}
+li a:hover{
+  color: whitesmoke;
+  text-decoration: underline;
+}
+.prise{
+  color: greenyellow;
+}
+
   /* Responsive Styles */
   @media screen and (max-width: 767px) {
     .card-container > *:not(.circle-link) ,
@@ -306,142 +323,131 @@
 <div class="toolbar" role="banner">
   <img
     width="40"
-    alt="Angular Logo"
-    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
+    alt="Shop Logo"
+    src="assets/pavankpalankar.ico"
   />
-  <span>Welcome</span>
+  <span>PJW</span>
     <div class="spacer"></div>
-    <a aria-label="Angular on twitter" target="_blank" rel="noopener" href="https://twitter.com/angular" title="Twitter">
-      <svg id="twitter-logo" height="24" data-name="Logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
-        <rect width="400" height="400" fill="none"/>
-        <path d="M153.62,301.59c94.34,0,145.94-78.16,145.94-145.94,0-2.22,0-4.43-.15-6.63A104.36,104.36,0,0,0,325,122.47a102.38,102.38,0,0,1-29.46,8.07,51.47,51.47,0,0,0,22.55-28.37,102.79,102.79,0,0,1-32.57,12.45,51.34,51.34,0,0,0-87.41,46.78A145.62,145.62,0,0,1,92.4,107.81a51.33,51.33,0,0,0,15.88,68.47A50.91,50.91,0,0,1,85,169.86c0,.21,0,.43,0,.65a51.31,51.31,0,0,0,41.15,50.28,51.21,51.21,0,0,1-23.16.88,51.35,51.35,0,0,0,47.92,35.62,102.92,102.92,0,0,1-63.7,22A104.41,104.41,0,0,1,75,278.55a145.21,145.21,0,0,0,78.62,23" fill="#fff"/>
-      </svg>
-    </a>
-    <a aria-label="Angular on YouTube" target="_blank" rel="noopener" href="https://youtube.com/angular" title="YouTube">
-      <svg id="youtube-logo" height="24" width="24" data-name="Logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#fff">
-        <path d="M0 0h24v24H0V0z" fill="none"/>
-        <path d="M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM10 15V9l5.2 3-5.2 3z"/>
-      </svg>
-    </a>
+    <div class="block-rate">
+      <ul class="rate">
+        <li><a href="#" (click)="updateRate($event)">Gold 999: <span class="price">{{goldRate}}</span></a></li>
+        <li><a href="#" (click)="updateRate($event)">Silver 999: <span class="price">{{silverRate}}</span></a></li>
+      </ul>
+    </div>    
 </div>
 
-<div class="content" role="main"> 
+<div class="container" role="main"> 
 
   <!-- Resources -->
   <!-- <h2>Resources</h2>
   <p>Here are some links to help you get started:</p> -->
 
-  <div class="card-container">
+  <div class="container">
     <mat-card class="example-card">
-      <mat-card-content>
-
-     
-    <mat-tab-group>
-      <mat-tab>
-
-        <ng-template mat-tab-label>    
-          <span style="margin: 10px;">
-            <img src="assets/gold-bars.png" />
-          </span>
-          Silver
-        </ng-template>
-        <div class="container">
-          <form [formGroup]="calculateForm">
-            <mat-grid-list cols="2" rowHeight="50px">
-              <mat-grid-tile>   
-                <mat-form-field class="example-full-width" appearance="fill">
-                  <mat-label>Grams</mat-label>
-                  <span matPrefix>gm &nbsp;</span>
-                  <input  formControlName="weightText" type="text" matInput placeholder="0.00">            
-                </mat-form-field>
-              </mat-grid-tile>
-              <mat-grid-tile>
-                <button mat-raised-button color="primary" (click)="onCalculate()">Calculate</button>
-              </mat-grid-tile>
-              <mat-grid-tile>
-               <label>Wastage: {{silverItemsObj?.silverWastage}}</label> 
-              </mat-grid-tile>  
-              <mat-grid-tile>
-                <label>MC: {{silverItemsObj?.silverMc}}</label> 
-              </mat-grid-tile>           
-            </mat-grid-list>       
-          </form>
-        </div>
-      
-        <mat-divider></mat-divider>
+      <mat-card-content>     
         <mat-tab-group>
           <mat-tab>
-            <ng-template mat-tab-label>             
-              450
-            </ng-template>     
-          <mat-grid-list cols="2" rowHeight="50px">     
-            <mat-grid-tile>
-              <label>Fancy Payal / ಕಾಲ್ಚೈನ್:</label> 
-            </mat-grid-tile> 
-            <mat-grid-tile>
-              {{silverItemsObj?.silver450?.fancyPayalChain}}
-            </mat-grid-tile>  
+            <ng-template mat-tab-label>    
+              <span style="margin: 10px;">
+                <img src="assets/gold-bars.png" />
+              </span>
+              Silver
+            </ng-template>
+            <div class="container">
+              <form [formGroup]="calculateForm">
+                <mat-grid-list cols="2" rowHeight="50px">
+                  <mat-grid-tile>   
+                    <mat-form-field class="example-full-width" appearance="fill">
+                      <mat-label>Grams</mat-label>
+                      <span matPrefix>gm &nbsp;</span>
+                      <input  formControlName="weightText" type="text" matInput placeholder="0.00">            
+                    </mat-form-field>
+                  </mat-grid-tile>
+                  <mat-grid-tile>
+                    <button mat-raised-button color="primary" (click)="onCalculate()">Calculate</button>
+                  </mat-grid-tile>
+                  <mat-grid-tile>
+                  <label>Wastage: {{silverItemsObj?.silverWastage}}</label> 
+                  </mat-grid-tile>  
+                  <mat-grid-tile>
+                    <label>MC: {{silverItemsObj?.silverMc}}</label> 
+                  </mat-grid-tile>           
+                </mat-grid-list>       
+              </form>
+            </div>
+          
+            <mat-divider></mat-divider>
+            <mat-tab-group>
+              <mat-tab>
+                <ng-template mat-tab-label>             
+                  450
+                </ng-template>     
+              <mat-grid-list cols="2" rowHeight="50px">     
+                <mat-grid-tile>
+                  <label>Fancy Payal / ಕಾಲ್ಚೈನ್:</label> 
+                </mat-grid-tile> 
+                <mat-grid-tile>
+                  {{silverItemsObj?.silver450?.fancyPayalChain}}
+                </mat-grid-tile>  
 
-            <mat-grid-tile>
-              <label>Normal Payal / ಕಾಲ್ಚೈನ್:</label> 
-            </mat-grid-tile> 
-            <mat-grid-tile>
-              {{silverItemsObj?.silver450?.normalPayalChain}}
-            </mat-grid-tile> 
-          </mat-grid-list>    
+                <mat-grid-tile>
+                  <label>Normal Payal / ಕಾಲ್ಚೈನ್:</label> 
+                </mat-grid-tile> 
+                <mat-grid-tile>
+                  {{silverItemsObj?.silver450?.normalPayalChain}}
+                </mat-grid-tile> 
+              </mat-grid-list>    
+              </mat-tab>
+            
+              <mat-tab>
+                <ng-template mat-tab-label>             
+                  550
+                </ng-template>
+                <mat-grid-list cols="2" rowHeight="50px">     
+                  <mat-grid-tile>
+                    <label>Children Kada / ಮಕ್ಕಳ ಕಡ:</label> 
+                  </mat-grid-tile> 
+                  <mat-grid-tile>
+                    {{silverItemsObj?.silver550?.silverKada?.child}}
+                  </mat-grid-tile>
+                  <mat-grid-tile>
+                    <label>Gents Kada / ಹುಡುಗರ ಕಡ:</label> 
+                  </mat-grid-tile> 
+                  <mat-grid-tile>
+                    {{silverItemsObj?.silver550?.silverKada?.gents}}
+                  </mat-grid-tile> 
+
+                  <mat-grid-tile>
+                    <label>Ladies Kada / ಹೆಂಗಸರ ಕಡ:</label> 
+                  </mat-grid-tile> 
+                  <mat-grid-tile>
+                    {{silverItemsObj?.silver550?.silverKada?.ladies}}
+                  </mat-grid-tile> 
+                </mat-grid-list>   
+              </mat-tab>   
+              <mat-tab>
+                <ng-template mat-tab-label>            
+                  650
+                </ng-template>
+                Content 3
+              </mat-tab>  
+            
+            </mat-tab-group>
           </mat-tab>
         
           <mat-tab>
-            <ng-template mat-tab-label>             
-              550
+            <ng-template mat-tab-label>
+              <span style="margin: 10px;">
+                <img src="assets/gold-bars.png" />
+              </span>
+              Gold
             </ng-template>
-            <mat-grid-list cols="2" rowHeight="50px">     
-              <mat-grid-tile>
-                <label>Children Kada / ಮಕ್ಕಳ ಕಡ:</label> 
-              </mat-grid-tile> 
-              <mat-grid-tile>
-                {{silverItemsObj?.silver550?.silverKada?.child}}
-              </mat-grid-tile>
-              <mat-grid-tile>
-                <label>Gents Kada / ಹುಡುಗರ ಕಡ:</label> 
-              </mat-grid-tile> 
-              <mat-grid-tile>
-                {{silverItemsObj?.silver550?.silverKada?.gents}}
-              </mat-grid-tile> 
-
-              <mat-grid-tile>
-                <label>Ladies Kada / ಹೆಂಗಸರ ಕಡ:</label> 
-              </mat-grid-tile> 
-              <mat-grid-tile>
-                {{silverItemsObj?.silver550?.silverKada?.ladies}}
-              </mat-grid-tile> 
-            </mat-grid-list>   
+            Content 2
           </mat-tab>   
-          <mat-tab>
-            <ng-template mat-tab-label>            
-              650
-            </ng-template>
-            Content 3
-          </mat-tab>  
         
         </mat-tab-group>
-      </mat-tab>
-    
-      <mat-tab>
-        <ng-template mat-tab-label>
-          <span style="margin: 10px;">
-            <img src="assets/gold-bars.png" />
-          </span>
-          Gold
-        </ng-template>
-        Content 2
-      </mat-tab>   
-    
-    </mat-tab-group>
-
-  </mat-card-content>
-</mat-card>
-
+      </mat-card-content>
+    </mat-card>
   </div>
 
   <!-- Next Steps -->

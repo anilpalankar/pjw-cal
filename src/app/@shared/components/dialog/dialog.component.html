@@ -1,0 +1,26 @@
+<h2 mat-dialog-title>{{ dialogData.title  }}</h2>
+<span class="dialog-close-icon" *ngIf="dialogData.showPopupCrossButton">
+    <mat-icon class="fa" (click)="onCancelClick()">
+        <span style="font-size: 17px; color: black;">✖</span>
+    </mat-icon>
+</span>
+<div class="dialog-title-divider mt-3">
+    <mat-divider></mat-divider>
+</div>
+<mat-dialog-content>
+    <ng-template #componentPlaceHolder></ng-template>
+</mat-dialog-content>
+
+<!-- Save and Edit Button, Toggle based on new form or To edit existing form -->
+<mat-dialog-actions *ngIf="dialogData?.showActionBtn">
+    <ng-template [ngIf]="dialogData.showSaveBtn">
+        <button mat-raised-button type="submit" color="primary" (click)="onSaveClick()">
+            {{ dialogData.saveBtnLabel }}
+        </button>
+    </ng-template>
+    <ng-template [ngIf]="dialogData.showCancelBtn">
+        <button mat-raised-button type="submit" (click)="onCancelClick()">
+            {{ dialogData.cancelBtnLabel  }}
+        </button>
+    </ng-template>
+</mat-dialog-actions>

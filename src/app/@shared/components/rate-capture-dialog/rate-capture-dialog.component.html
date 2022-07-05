@@ -1,0 +1,75 @@
+<mat-card class="containter">
+    <mat-card-title>
+        <div class="mt-4" style="text-align: center;">
+            <span style="font-size: 50px;">⚠️</span>
+        </div>
+    </mat-card-title>
+    <mat-card-content class="auto-scroll">
+        <p class="p-description">
+            {{ _data.dialogDescription  }}
+        </p>
+       
+        <form [formGroup]="rateCaptureForm">
+            <div class="flex-container">
+                <mat-grid-list cols="1" rowHeight="50px">
+                    <mat-grid-tile>  
+                        <mat-form-field class="full-width-field" appearance="fill">
+                            <input
+                                matInput
+                                #inputSilverRate
+                                type="text"
+                                [maxlength]="6"
+                                id="Silver_Rate"
+                                pattern="^[1-9]\d*(\.\d+)?$"
+                                (keypress)="numberandDecimal($event)"                        
+                                (paste)="nopaste()"
+                                formControlName="Silver_Rate"
+                            />
+                            <span matPrefix>&#8377;&nbsp;</span>
+                            <mat-hint align="end"
+                                >{{ inputSilverRate.value?.length || 0 }}/6</mat-hint
+                            >
+                            <!-- <mat-error
+                                *ngIf="
+                                    submittedRate &&
+                                    this.getRateControl['Silver_Rate'].errors
+                                "
+                            >
+                                <mat-error
+                                    *ngIf="
+                                        this.getRateControl['Silver_Rate']?.errors
+                                            ?.required
+                                    "
+                                >
+                                    Please enter valid amount
+                                </mat-error>
+                              
+                            </mat-error> -->
+                        </mat-form-field>
+                    </mat-grid-tile>
+                    <mat-grid-tile>  
+                        <mat-form-field  class="full-width-field" appearance="fill">
+                            <input
+                                matInput
+                                #inputGoldRate
+                                type="text"
+                                [maxlength]="6"
+                                id="Gold_Rate"
+                                pattern="^[1-9]\d*(\.\d+)?$"
+                                (keypress)="numberandDecimal($event)"                        
+                                (paste)="nopaste()"
+                                formControlName="Gold_Rate"
+                            />
+                            <span matPrefix>&#8377;&nbsp;</span>
+                            <mat-hint align="end"
+                                >{{ inputGoldRate.value?.length || 0 }}/6</mat-hint
+                            >
+                         
+                        </mat-form-field>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+        </form>
+      
+    </mat-card-content>
+</mat-card>

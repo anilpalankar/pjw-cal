@@ -8,13 +8,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTabsModule} from '@angular/material/tabs';
 import { MaterialModule } from 'src/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from './@shared/shared.module';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    
   ],
   imports: [
     BrowserModule,
+    SharedModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
